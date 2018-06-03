@@ -18,8 +18,13 @@
     			<div class="container">
     				<div class="nav__menu">
     					<a class="nav__header" href="/">Moviemark</a>
-                        <div class="col-md-5 pull-right">
-
+                        <div class="col-md-9 pull-right">
+                            <form action="" name="search" class="form-inline">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" value="{{ request.GET.get }}" name="query">
+                                    <input type="submit" class="btn btn-primary" value="Search"/>
+                                </div>
+                            </form>
                         </div>
     				</div>
     			</div>
