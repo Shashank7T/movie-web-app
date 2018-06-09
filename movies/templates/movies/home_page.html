@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
         <link rel="stylesheet" href="{% static 'movies/movie_app.css' %}"/>
 
-        <title>Movies_app</title>
+        <title>Moviemark</title>
 	</head>
 
     <body>
@@ -18,7 +18,7 @@
     			<div class="container">
     				<div class="nav__menu">
     					<a class="nav__header" href="/">Moviemark</a>
-                        <div class="col-md-9 pull-right">
+                        <div class="col-md-8 pull-right">
                             <form action="" name="search" class="form-inline">
                                 <div class="form-group">
                                     <input type="text" class="form-control" value="{{ request.GET.get }}" name="query">
@@ -26,6 +26,7 @@
                                 </div>
                             </form>
                         </div>
+                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create</button>
     				</div>
     			</div>
     		</nav>
@@ -34,17 +35,22 @@
                     <div class="movies">
                         {% for movie in result_set %}
                             <div class="movies__item">
+                                <i class="movies__item-star fa fa-star hide"></i>
+                                <p class="movies__item-rating hide">{{ movie.Rating }}/10</p>
                                 <img class="movies__item-image" src="{{ movie.Picture }}" alt="">
+                                <button type="button" class="movies__item-expander hide" data-toggle="modal" data-target="#modal-{{ movie.id }}">Details</button>
                                 <div class="movies__item-title">
                                     {{ movie.Name }}
                                 </div>
                             </div>
+                            {% include 'movies/details_modal.html' %}
                         {% endfor %}
                     </div>
                 </div>
             </section>
 
     	</div>
+        {% include 'movies/create_modal.html' %}
 
 
         <!-- Optional JavaScript -->
