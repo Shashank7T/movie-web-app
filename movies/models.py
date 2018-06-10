@@ -8,5 +8,5 @@ class Movies(models.Model):
     Rating = models.IntegerField()
     Notes = models.TextField(max_length=1000)
 
-    def __str__(self):
-        return self.Name
+    # def __str__(self):
+    #   return self.Name
