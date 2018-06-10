@@ -31,3 +31,9 @@ def edit(request, movie_id):
         Movies.objects.filter(id=movie_id).update(Name=request.POST.get('name'), Picture=request.POST.get('url'), Rating=request.POST.get('rating'), Notes=request.POST.get('notes'))
     return redirect('/')
 
+
+def delete(request, movie_id):
+    del_mov_obj = Movies.objects.get(id=movie_id)
+    del_mov_obj.delete()
+    return redirect('/')
+
